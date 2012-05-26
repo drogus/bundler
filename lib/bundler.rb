@@ -218,7 +218,7 @@ module Bundler
 
     def setup_environment
       begin
-        ENV["BUNDLE_BIN_PATH"] = Bundler.rubygems.bin_path("bundler", "bundle", VERSION)
+        ENV["BUNDLE_BIN_PATH"] ||= Bundler.rubygems.bin_path("bundler", "bundle", VERSION)
       rescue Gem::GemNotFoundException
         ENV["BUNDLE_BIN_PATH"] = File.expand_path("../../../bin/bundle", __FILE__)
       end
